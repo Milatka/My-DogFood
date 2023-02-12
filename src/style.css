@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+a {text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 100px auto 50px;
+}
+.container>* {
+    padding: 0 calc(50% - 750px);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2em;
+}
+
+.empty-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+    justify-content: center;
+}
+
+.empty-block svg {
+    font-size: 4rem;
+    fill: #5654548f;
+}
+
+.empty-block .btn {
+    border: 1px solid #dedede;
+    border-radius: 18px;
+    display: flex;
+    padding: 6px 12px;
+}
+
+
+/* >* -все прямые потомки */
+@media (max-width: 1260px) {
+    .container>* {
+        padding: 0 30px;
+    }
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2em;
+    }
+}
+/*#root {
+    min-height: 100vh;
+    background-color: crimson;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mark {
+    color: rgb(19, 161, 19);
+}
+.card {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid;
+}
+.box {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 10px;
+} */
