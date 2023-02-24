@@ -1,15 +1,16 @@
 import React from "react";
-import Card from "../components/Card";
-import Ads from "../components/Ads/ads";
+import Ads from "../components/Ads/ads.jsx";
 import {Link} from "react-router-dom";
+import {ReactComponent as Pointer} from "./img/pointer.svg"
 
-export default ({data}) => {
+export default () => {
     return <>
-    <h1>Main page</h1>
-    <Link to="/catalog">Перейти в каталог</Link>
+    <div className="advert">
+    <h1>Крафтовые лакомства для собак</h1>
+        <h4>Всегда свежие лакомства ручной работы с доставкой по России и Миру</h4>
+        <Link to="/catalog"><Pointer/> Перейти в каталог</Link>
+    </div>
     <Ads/>
-    {/* <div className="cards">          
-            {data.map((el, i) => <Card key={"card_" + i} text={el} like={(i + 1) % 2 === 0}/>)}            
-        </div> */}
-    </>
+    <div><Link className="lnk" to="/catalog"><Pointer/> Больше вкусняшек в каталоге</Link></div> 
+     </>
 }

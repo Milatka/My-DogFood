@@ -1,22 +1,17 @@
 import React, {useState, useEffect} from "react";
 import {Routes, Route} from "react-router-dom";
 import "./style.css"
-//import products from "./assets/data.json";
-import Header from "./components/Header/header";
-import Footer from "./components/Footer/footer";
-import Modal from "./components/Modal"
-// import Search from "./components/Search/search";
-// import Card from "./components/Card";
+import Header from "./components/Header/header.jsx";
+import Footer from "./components/Footer/footer.jsx";
+import Modal from "./components/Modal/modal.jsx"
 import Home from "./pages/Home.jsx";
 import Catalog from "./pages/Catalog.jsx";
-import Profile from "./pages/Profile";
-import Product from "./pages/Product";
-
+import Profile from "./pages/Profile.jsx";
+import Product from "./pages/Product.jsx";
 import {Api} from "./Api";
 import Context from "./Context";
 
 const smiles = ["^_^", "=)", "O_o", ";(", "@_@", "^_O", "-_-", ":)"];
-
 const App = () => {
     let usr = localStorage.getItem("user8");
     if (usr) {
@@ -28,23 +23,17 @@ const App = () => {
     const [api, setApi] = useState(new Api(token));
     const [goods, setGoods] = useState([]);
     const [visibleGoods, setVisibleGoods] = useState(goods);
-console.log(user)
+
     useEffect(() => {
-        console.log("Hello!")
-        console.log(token);
-        if (token) {
-            //загрузить данные с сервера
+            if (token) {          
             api.getProducts()
             .then(res => res.json())
-            .then(data => {
-                console.log(data);
+            .then(data => {                
             setGoods(data.products);
              })
         }
-    }, []) //ф-ия отработает один раз при создании компонента(т.к. без зависимости-пустой массив)
-
+    }, [])
     useEffect(() => {
-        console.log("Change token");
         setApi(new Api(token));
         let usr = localStorage.getItem("user8");
     if (usr) {
@@ -52,17 +41,14 @@ console.log(user)
     }
         setUser(usr);        
     }, [token])
-
     useEffect(() => {
         if (!user) {
            localStorage.removeItem("token8");
            setToken(null);
         }       
     }, [user])
-
     useEffect(() => {
-        if (token) {
-            //загрузить данные с серверв
+        if (token) {            
             api.getProducts()
             .then(res => res.json())
             .then(data => {
@@ -70,11 +56,9 @@ console.log(user)
              })
         }       
     }, [api])
-
     useEffect(() => {
         setVisibleGoods(goods);
     }, [goods])
-
     return (
     <Context.Provider value={{
         user: user,        
@@ -88,20 +72,11 @@ console.log(user)
         setApi: setApi,
         setModalActive: setModalActive,
         setGoods: setGoods,
-        setVisibleGoods: setVisibleGoods,
-        //PATH: PATH
+        setVisibleGoods: setVisibleGoods,       
     }}>
         <div className="container">
-            <Header 
-                //user={user} 
-                //setUser={setUser} 
-                // goods={goods}
-                // searchGoods={setVisibleGoods} 
-                // setModalActive={setModalActive}
-               
-            />
-            <main>        
-                {/* {user ? <Catalog data={goods}/> : <Home data={smiles}/>} */}
+            <Header/>
+            <main>    
                 <Routes>
                     <Route path="/" element={<Home data={smiles}/>}/>
                     <Route path="/catalog" element={<Catalog data={visibleGoods}/>}/>
@@ -111,12 +86,9 @@ console.log(user)
             </main>
             <Footer/>
         </div>
-        <Modal/>
-        {/*  isActiv, setActive- парам, кот.работают внутри компонента Modal
-        modalActive, setModalActive - сохраняются внутри параметров */}        
+        <Modal/>            
     </Context.Provider>
     )
 }
-
 export default App;
 

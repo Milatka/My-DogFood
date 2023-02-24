@@ -14,7 +14,6 @@ class Api {
             body: JSON.stringify(body)
         });
     }
-
     signIn(body){
         return fetch(`${this.path}/signin`, {
             method: "POST",
@@ -24,22 +23,32 @@ class Api {
             body: JSON.stringify(body)
         });
     }
-
-
- getProducts() {
-    return fetch(`${this.path}/products`, {
-        headers: {
-            "authorization": `Bearer ${this.token}`
-        }
-    })
- }
-
- getProduct(id) {
-    return fetch(`${this.path}/products/${id}`, {
-        headers: {
-            "authorization": `Bearer ${this.token}`
-        }
-    })
- }
-}
+    getProducts() {
+        return fetch(`${this.path}/products`, {
+            headers: {
+                "authorization": `Bearer ${this.token}`
+            }
+        })
+    }
+    getProduct(id) {
+        return fetch(`${this.path}/products/${id}`, {
+            headers: {
+                "authorization": `Bearer ${this.token}`
+            }
+        })
+    }
+    getUserInfo() {
+        return fetch (`${this.path}/v2/${this.group}/users/me`, {
+            headers: {
+                "authorization": `Bearer ${this.token}`
+                }
+            })
+    }
+    setLike(isLike, id) {
+        return fetch(`${this.path}/products/likes/${id}`, {
+            method: isLike ? "DELETE" : "PUT", 
+            headers:{"authorization": `Bearer ${this.token}`}
+        })
+    }
+    }
 export {Api};

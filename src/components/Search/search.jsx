@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react";
-import "./search.css";
+import "./style.css";
 import {useNavigate} from "react-router-dom";
 import {ReactComponent as SearchImg} from "./img/search-glass.svg";
 import {ReactComponent as CloseImg} from "./img/xmark.svg";
@@ -10,11 +10,10 @@ export default () => {
     const navigate = useNavigate();
     const [text, updateText] = useState("");
     const [searchData, setSearchData] = useState(goods.filter(el => el.name.toLowerCase().includes(text.toLowerCase())));
-
     const clearSearch = () => {
         updateText("");
         setSearchData(goods);
-        setVisibleGoods(goods);//после очистки поиска возвращает каталог
+        setVisibleGoods(goods);
     }
     const search = (e) => {
         navigate("/catalog");
@@ -24,11 +23,10 @@ export default () => {
         setVisibleGoods(arr);
     }
     return <div className="search_box">
-    <input placeholder="Поиск..." value={text} onChange={search}/>
-    <button>{text ? <CloseImg onClick={clearSearch}/> : <SearchImg/>}</button>
-    {text && <div className="search-result">
-        По запросу <b>{text}</b>&nbsp;
-        {searchData.length > 0 ? `найдено ${searchData.length} товаров` : "не найдено ни одного товара"}
+        <input placeholder="Поиск..." value={text} onChange={search} maxLength="35"/>
+        <button>{text ? <CloseImg onClick={clearSearch}/> : <SearchImg/>}</button>
+        {text && <div className="search-result">По запросу <b>{text}</b>&nbsp;
+            {searchData.length > 0 ? `найдено ${searchData.length} товаров` : "не найдено ни одного товара"}
         </div>}
     </div>
 }

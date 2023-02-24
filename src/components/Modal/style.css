@@ -10,7 +10,6 @@
     align-items: center;
     z-index: 100;
 }
-
 .modal {
     width: 300px;
     background-color: #fff;
@@ -21,12 +20,10 @@
     gap: 20px;
     position: relative;
 }
-
 .modal h2 {
     margin: 0;
     text-align: center;    
 }
-
 .modal-close {
     width: 20px;
     height: 20px;
@@ -39,16 +36,13 @@
     right: -8px;
     cursor: pointer;
 }
-
 .modal-close:hover {
     background-color: rgb(71, 226, 74);;
 }
-
 form {
     display: grid;
     gap: 10px;
 }
-
 input {
     flex: 1;
     height: 30px;
@@ -59,18 +53,15 @@ input {
     font-size: 16px;
     outline: none;
 }
-
 input:focus {
     border-color: rgb(71, 226, 74);
 }
-
 button.btn {
     border: none;
     border-radius: 10px;
     height: 30px;
     background-color: rgb(71, 226, 74);
 }
-
 button.link {
     background-color: transparent;
     border: 1px solid rgb(71, 226, 74);

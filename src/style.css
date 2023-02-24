@@ -1,12 +1,10 @@
 body {
-    margin: 0;
+    margin: 0px 30px;
     font-family: sans-serif;
 }
-
 a {text-decoration: none;
     color: inherit;
 }
-
 .container {
     min-height: 100vh;
     display: grid;
@@ -15,13 +13,11 @@ a {text-decoration: none;
 .container>* {
     padding: 0 calc(50% - 750px);
 }
-
 .cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2em;
 }
-
 .empty-block {
     display: flex;
     flex-direction: column;
@@ -30,55 +26,52 @@ a {text-decoration: none;
     height: 100%;
     justify-content: center;
 }
-
 .empty-block svg {
     font-size: 4rem;
     fill: #5654548f;
 }
-
-.empty-block .btn {
-    border: 1px solid #dedede;
-    border-radius: 18px;
-    display: flex;
-    padding: 6px 12px;
+.advert {
+    border-radius: 10px;
+    padding: 10px 30px;
+    background-color: rgb(71, 226, 74);
+    display: flex;   
+    flex-direction: column;     
 }
-
-
-/* >* -все прямые потомки */
+.advert :link {
+    display: inline-block; 
+    align-items: center;   
+    background: white;
+    padding: 20px; 
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+    max-width: 200px;
+    min-width: 100px;    
+}
+.lnk {
+    display: inline-block; 
+    align-items: center;   
+    background: rgb(71, 226, 74);
+    padding: 20px; 
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+    max-width: 300px;
+    min-width: 100px; 
+    margin: 10px;   
+}
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);          
+    gap: 2em;
+}
+.cards_home {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);        
+    gap: 2em;
+}
 @media (max-width: 1260px) {
     .container>* {
         padding: 0 30px;
     }
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2em;
-    }
 }
-/*#root {
-    min-height: 100vh;
-    background-color: crimson;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.mark {
-    color: rgb(19, 161, 19);
-}
-.card {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    border: 1px solid;
-}
-.box {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    gap: 10px;
-} */

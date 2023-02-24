@@ -1,17 +1,14 @@
 import React, {useContext} from "react";
 import Search from "../Search/search";
-import "./header.css";
+import "./style.css";
 import Context from "../../Context";
+import { Link } from "react-router-dom";
+import {ReactComponent as Logo} from "./img/logo.svg";
 
 export default () => {
-    // хук состояния [св-во, функция в качестве аргумента которой передается
-    // новое значение нашего св-ва] = useState(аргумент-изначальное зн-е св-ва)
-    // const [user, setUser] = useState(localStorage.getItem("user8"));
-    // let user = localStorage.getItem("user8");
     const {user, setUser, setModalActive} = useContext(Context);
     const logIn = (e) => {
-        e.preventDefault();
-        
+        e.preventDefault();        
         setModalActive(prev => !prev);
     }
     const logOut = (e) => {
@@ -20,14 +17,13 @@ export default () => {
         setUser("");        
     }
     return <header>
-        <a className="logo" href="/">DogFood</a>
+        <Link className="logo" to="/"><Logo/></Link>
         <Search/>
-        {/* <input type="search" placeholder="Поиск..." className="search"/> */}
-        <nav className="menu">
-            {user && user.name && <a href="/Profile">{user.name}</a>}
-            {<img src={user.avatar} alt="фото" style={{width: "70px", height: "70px"}}/>}
-            {!user && <a href="" onClick={logIn}>Войти</a>}
-            {user && <a href="" onClick={logOut}>Выйти</a>}
+            <nav className="menu">
+            {user && user.name && <Link to={"profile"}>{user.name}</Link>}
+            {user && user.avatar && <img src={user.avatar} alt="фото" style={{width: "70px", height: "70px"}}/>}
+            {!user && <Link onClick={logIn}>Войти</Link>}
+            {user && <Link onClick={logOut}>Выйти</Link>}
         </nav>
        </header>
 }

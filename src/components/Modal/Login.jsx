@@ -1,43 +1,42 @@
 import React, {useState, useContext} from "react";
 import Context from "../../Context";
 export default ({change,close}) => {
-    const [inp1, setInp1] = useState("");
-    const [inp2, setInp2] = useState("");
-
-    const {setToken, api} = useContext(Context);
-  
+    const [inpLogin, setInpLogin] = useState("");
+    const [inpPassword, setinpPassword] = useState("");
+    const {setToken, api} = useContext(Context);  
     const sendForm = (e)=> {
         e.preventDefault();
         const body = {
-            email: inp1,
-            password:inp2
+            email: inpLogin,
+            password:inpPassword
         }    
         api.signIn(body)
         .then(res => res.json())
         .then(data => {
-            //не забыть отловить сообщение с ошибкой
-            console.log(data);
+            if (!data.err) {
+                api.signIn(body)
+                .then(res => res.json())
+                .then(data => {
             localStorage.setItem("user8", JSON.stringify(data.data));
             localStorage.setItem("token8", data.token);
             setToken(data.token);
-            setInp1("");
-            setInp2("");
+            setInpLogin("");
+            setinpPassword("");
             close(false);
-        })
-    }
-
+        })} else {
+            alert("Неправильный логин и(или) пароль");                
+        }
+    })}
     return <form onSubmit={sendForm}>
     <input type="email" 
         placeholder="Введите Вашу почту"
-        value={inp1} 
+        value={inpLogin} 
         required
-        onChange={(e) => {setInp1(e.target.value)}}/>
-
-    <input type="password" 
+        onChange={(e) => {setInpLogin(e.target.value)}}/>
+        <input type="password" 
         placeholder="Пароль" 
-        value={inp2} 
-        onChange={(e) => {setInp2(e.target.value)}}/>
-
+        value={inpPassword} 
+        onChange={(e) => {setinpPassword(e.target.value)}}/>
         <button className="btn" type="submit">Войти</button>
     <button className="btn link" type="button" onClick={() => {change(prev => !prev)}}>Зарегистрироваться</button>
     </form>

@@ -13,5 +13,5 @@ export default React.createContext({
     goods: [],
     setGoods: () => {},
     visibleGoods: [],
-    setVisibleGoods: () => {},
+    setVisibleGoods: () => {},    
 });

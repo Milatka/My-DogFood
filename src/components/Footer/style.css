@@ -1,0 +1,30 @@
+footer {
+    position: relative;
+    background-color: rgb(71, 226, 74);
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    height: 150px;
+    padding: 100px;
+}
+.footer__copy {
+    font-size: 1,5em;
+    align-items: center;    
+}
+footer a:hover{
+    color:crimson;
+}
+.footer__contact{
+    text-align: left;
+    display: grid;
+    gap: 5px;
+}
+.footer_icon{
+    margin: 10px;
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    margin: 0;
+}
